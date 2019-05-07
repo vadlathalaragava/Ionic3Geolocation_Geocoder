@@ -1,14 +1,31 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Ionic 3 Geolocation & Geocoder Demo
     </ion-title>
   </ion-navbar>
 </ion-header>
-
+ 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <h1>Get Location</h1>
+ 
+  <button ion-button (click)="getGeolocation()">Get Location</button>
+  <button ion-button (click)="watchLocation()">Watch Location Updates</button>
+  <button ion-button (click)="stopLocationWatch()">Stop Location Watch</button>
+  <div *ngIf="geoLatitude">
+    <p>Latitude : {{geoLatitude}}</p>
+    <p>Longitude : {{geoLongitude}}</p>
+    <p>Accuracy : {{geoAccuracy}}</p>
+    <p class="address-text">
+ 
+      <span class="watch-text" *ngIf="isWatching; else notWatching">
+        Watching Location
+      </span>
+      <ng-template #notWatching>
+        Location Watch Stopped
+      </ng-template>
+ 
+      <br>Address : {{geoAddress }}
+    </p>
+  </div>
 </ion-content>
